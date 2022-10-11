@@ -1,6 +1,6 @@
 # 704. Binary Search
 
-1⃣️Topic: Binary Search
+1 Topic: Binary Search
 Create Time: August 24, 2022 2:38 PM
 Difficulty: Easy
 ID: 704
