@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: igor-kupczynski/notion-exporter@v1.0.2
         with:
-          pages: "33becf164357401cae56646404667ff6"  # Pages IDs identified in (step 2)  
+          pages: "256a6545727e44e6bc60566b5d636443"  # Pages IDs identified in (step 2)  
           output-dir: Carl-Camp
           notion-token: ${{ secrets.NOTION_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
