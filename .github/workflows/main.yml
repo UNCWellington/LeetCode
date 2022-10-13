@@ -1,34 +1,20 @@
 
         
 
-name: Notion Sync
+
+name: Export my notion workspace
 
 on:
-  workflow_dispatch:
-  issues:
-    types:
-      [
-        opened,
-        edited,
-        labeled,
-        unlabeled,
-        assigned,
-        unassigned,
-        milestoned,
-        demilestoned,
-        reopened,
-        closed,
-      ]
+
+workflow_dispatch: {}
 
 jobs:
-  notion_job:
-    runs-on: ubuntu-latest
-    name: Add GitHub Issues to Notion
-    steps:
-      - name: Add GitHub Issues to Notion
-        uses: instantish/notion-github-action@v1
-        with: 
-          pages: "33becf164357401cae56646404667ff6"  # Pages IDs identified in (step 2)  
-          output-dir: Carl-Camp
-          notion-token: ${{ secrets.NOTION_TOKEN }}
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+export:
+runs-on: ubuntu-latest
+steps:
+- uses: igor-kupczynski/notion-exporter@v1.0.2
+with:
+pages: "256a6545727e44e6bc60566b5d636443"  # Pages IDs identified in (step 2)
+output-dir: Carl-Camp
+notion-token: ${{ secrets.NOTION_TOKEN }}
+github-token: ${{ secrets.GITHUB_TOKEN }}
