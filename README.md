@@ -1,0 +1,96 @@
+15. 3Sum
+
+## Description
+
+     
+
+Given an integer array nums, return all the triplets `[nums[i], nums[j], nums[k]]` such that `i != j`, `i != k`, and `j != k`, and `nums[i] + nums[j] + nums[k] == 0`.
+
+Notice that the solution set must not contain duplicate triplets.
+
+**Example 1:**
+
+```
+Input: nums = [-1,0,1,2,-1,-4]
+Output: [[-1,-1,2],[-1,0,1]]
+Explanation:
+nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.
+nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.
+nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
+The distinct triplets are [-1,0,1] and [-1,-1,2].
+Notice that the order of the output and the order of the triplets does not matter.
+
+```
+
+**Example 2:**
+
+```
+Input: nums = [0,1,1]
+Output: []
+Explanation: The only possible triplet does not sum up to 0.
+
+```
+
+**Example 3:**
+
+```
+Input: nums = [0,0,0]
+Output: [[0,0,0]]
+Explanation: The only possible triplet sums up to 0.
+```
+
+## Solution
+
+1. Algo#1
+
+Idea
+
+```
+# key point 1: using 2 ptrs
+# key point 2: a, b, c elminate ducplication
+
+```
+
+Process:
+
+1) 
+
+依然还是在数组中找到 abc 使得a + b +c =0，我们这里相当于 a = nums[i]，b = nums[left]，c = nums[right]。
+
+接下来如何移动left 和right呢， 如果nums[i] + nums[left] + nums[right] > 0 就说明 此时三数之和大了，因为数组是排序后了，所以right下标就应该向左移动，这样才能让三数之和小一些。
+
+如果 nums[i] + nums[left] + nums[right] < 0 说明 此时 三数之和小了，left 就向右移动，才能让三数之和大一些，直到left与right相遇为止。
+
+2) 
+
+说道去重，其实主要考虑三个数的去重。 a, b ,c, 对应的就是 nums[i]，nums[left]，nums[right]
+
+a 如果重复了怎么办，a是nums里遍历的元素，那么应该直接跳过去。
+
+都是和 nums[i]进行比较，是比较它的前一个，还是比较他的后一个。
+
+如果我们的写法是 这样：
+
+`if (nums[i] == nums[i + 1]) { // 去重操作
+    continue;
+}`
+
+那就我们就把 三元组中出现重复元素的情况直接pass掉了。 例如{-1, -1 ,2} 这组数据，当遍历到第一个-1 的时候，判断 下一个也是-1，那这组数据就pass了。
+
+**我们要做的是 不能有重复的三元组，但三元组内的元素是可以重复的！**
+
+所以这里是有两个重复的维度。
+
+那么应该这么写：
+
+`if (i > 0 && nums[i] == nums[i - 1]) {
+    continue;
+}`
+
+b,c 不能提前去重，否则像 [0,0,0,0,0,] 会提前去没了
+
+多加了 `while (left < right && nums[right] == nums[right + 1]) right--;` 这一行代码，其实就是把 需要执行的逻辑提前执行了，但并没有减少 判断的逻辑。
+
+最直白的思考过程，就是right还是一个数一个数的减下去的，所以在哪里减的都是一样的。
+
+Code:
