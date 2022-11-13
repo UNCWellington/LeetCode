@@ -1,14 +1,6 @@
 # 45. Jump Game II
 
-1⃣️Topic: Greedy
-Camp Day: 32
-Carl Link: https://programmercarl.com/0045.%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8FII.html
-Create Time: November 12, 2022 12:25 PM
-Difficulty: Medium
-ID: 45
-Last Review Time: November 13, 2022 1:03 PM
-LeetCode Link: https://leetcode.com/problems/jump-game-ii/
-NeetCode Link: https://www.youtube.com/embed/dJ7sWiOoK7g
+
 
 ## Description
 
@@ -60,7 +52,7 @@ use BFS idea
 
 Process:
 
-![Untitled](45%20Jump%20Game%20II%20f3c81f725d14410aaa65dfc71b76da0b/Untitled.png)
+![Untitled](img/45%20Jump%20Game.png))
 
 Code:
 
